@@ -1,6 +1,12 @@
 #include <iostream>
 
+#include "Board.h"
+#include <memory>
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    auto board = std::unique_ptr<Board>();
+
+
+
+    std::cout << board->toString()<< std::endl;
     return 0;
 }
