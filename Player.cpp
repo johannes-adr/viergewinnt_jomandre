@@ -9,6 +9,4 @@ Player::Player(int id)
 {
 }
 
-Player::~Player() {
-
-}
+Player::~Player() = default;

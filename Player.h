@@ -7,8 +7,10 @@
 #pragma once
 
 #include <string>
-#include "misc.h"
-#include "board.h"
+#include <memory>
+#include "Board.h"
+
+class Board;
 
 class Player {
 private:

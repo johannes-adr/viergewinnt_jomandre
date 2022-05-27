@@ -1,7 +1,9 @@
 #include <iostream>
+#include <memory>
 
 #include "Board.h"
-#include <memory>
+#include "Player.h"
+
 int main() {
     auto board = std::unique_ptr<Board>();
 
