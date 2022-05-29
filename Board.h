@@ -21,7 +21,7 @@ public:
     std::string toString();
     int getLowestNoneField(int col);
 private:
-    std::array<Color, Color> m_fields{} {};
+    std::array<Color, 7>std::array<Color,6>m_fields{};
     std::shared_ptr<Player> m_players[2]{};
 
 };
