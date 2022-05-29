@@ -4,8 +4,8 @@
 
 #include "Player.h"
 
-Player::Player(int id)
-: m_id(id)
+Player::Player(int id, Color team)
+: m_id(id), m_team(team)
 {
 }
 

@@ -19,9 +19,10 @@ private:
 
 protected:
     const int m_id {0};
+    const Color m_team {Color::NONE};
 
 public:
-    explicit Player(int id);
+    explicit Player(int id, Color team);
     ~Player();
     virtual bool play(int position) = 0;
     virtual bool giveUp() = 0;

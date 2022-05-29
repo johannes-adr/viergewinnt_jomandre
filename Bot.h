@@ -9,7 +9,10 @@
 #include "Player.h"
 
 class Bot : public Player {
-
+public:
+    virtual bool play(int position) = 0;
+    virtual bool giveUp();
+    virtual Color getTeam();
 };
 
 

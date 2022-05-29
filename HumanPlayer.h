@@ -9,8 +9,12 @@
 #include "Player.h"
 
 class HumanPlayer : public Player {
-
+public:
+    explicit HumanPlayer(int id, Color team);
+    ~HumanPlayer();
+    bool play(int position, Board &board) override;
+    bool giveUp() override;
+    Color getTeam() override;
 };
-
 
 #endif //VIERGEWINNT_JOMANDRE_HUMANPLAYER_H
