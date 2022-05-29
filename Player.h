@@ -10,6 +10,8 @@
 #include "Misc.h"
 #include "Board.h"
 
+class Board;
+
 class Player {
 private:
     int m_piecesLeft {21};
@@ -17,11 +19,11 @@ private:
 protected:
     std::weak_ptr<Board> m_board;
 public:
-    explicit Player(int id);
+    explicit Player();
     ~Player();
     virtual bool play(int position) = 0;
-    virtual bool giveUp() = 0;
-    virtual Color getTeam() = 0;
+    virtual bool giveUp();
+    virtual Color getTeam();
 };
 
 #endif //VIERGEWINNT_JOMANDRE_PLAYER_H

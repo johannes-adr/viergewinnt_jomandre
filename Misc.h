@@ -3,7 +3,7 @@
 //
 #pragma once
 
-enum Color{
+enum class Color{
     NONE,RED,YELLOW
 };
 

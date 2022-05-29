@@ -5,10 +5,12 @@
 #include "HumanPlayer.h"
 
 // Try to play at a given position.
-bool HumanPlayer::play(int position, Board &board) {
-    bool check = board.play(position);
-    if (check) {
-        return true;
+bool HumanPlayer::play(int position) {
+    if(auto board = this->m_board.lock()) {
+        bool check = board->play(position);
+        if (check) {
+            return true;
+        }
     }
     return false;
 }

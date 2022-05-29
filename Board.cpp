@@ -23,7 +23,7 @@ int Board::getLowestNoneField(int col){
 
 // Returns a string representation of the board.
 std::string Board::toString() {
-    auto builder = "";
+    std::string builder;
     auto board = &this->m_fields;
     for(int row = 0;row < Board::FIELD_HEIGHT;row++){
         for (int col = 0;col < Board::FIELD_WIDTH;col++){
