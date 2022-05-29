@@ -1,12 +1,12 @@
 //
 // Created by Johannes A. on 26.05.22.
 //
-
+#pragma once
 #include "Misc.h"
 #include "Player.h"
 #include <memory>
 #include <array>
-#pragma once
+
 
 class Player;
 
@@ -17,11 +17,16 @@ public:
 
     explicit Board();
     ~Board();
+
+    Color teamOfPlayer(Player &p);
     virtual bool play(int col);
-    std::string toString();
     int getLowestNoneField(int col);
+    void reset();
+
+
+    std::string toString();
 private:
-    std::array<Color, 7>std::array<Color,6>m_fields{};
+    Color m_fields[7][6]{};
     std::shared_ptr<Player> m_players[2]{};
 
 };

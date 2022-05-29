@@ -1,13 +1,11 @@
 //
 // Created by Johannes A. on 26.05.22.
 //
-
 #include "Board.h"
 
 // Creates a new Board object and fills it with empty fields.
 Board::Board(){
-    m_fields[0].fill(Color::NONE);
-    m_fields[1].fill(Color::NONE);
+    this->reset();
 }
 
 Board::~Board() = default;
@@ -29,8 +27,16 @@ std::string Board::toString() {
     auto board = &this->m_fields;
     for(int row = 0;row < Board::FIELD_HEIGHT;row++){
         for (int col = 0;col < Board::FIELD_WIDTH;col++){
-            auto field = &board[row][col];
-            builder+='O';
+            auto field = board[row][col];
+            printf("%d\n",field);
+            /*if(field == Color::YELLOW){
+                builder+='Y';
+            }else if(field == Color::RED){
+                builder+='R';
+            }else{
+                builder+='0';
+            }*/
+
         }
         builder+='\n';
     }
@@ -49,6 +55,18 @@ bool Board::play(int col){
 
 // Resets the board to its initial state
 void Board::reset(){
-    this->m_fields[0].fill(Color::NONE);
-    this->m_fields[1].fill(Color::NONE);
+    for(int row = 0;row < Board::FIELD_HEIGHT;row++){
+        for(int col = 0;col < Board::FIELD_WIDTH;col++){
+            this->m_fields[row][col] = Color::NONE;
+        }
+    }
+}
+
+Color Board::teamOfPlayer(Player &p) {
+    if(this->m_players[0].get() == &p){
+        return Color::RED;
+    }else if(this->m_players[1].get() == &p){
+        return Color::YELLOW;
+    }
+    return Color::NONE;
 }

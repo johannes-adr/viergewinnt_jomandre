@@ -10,11 +10,9 @@
 
 class HumanPlayer : public Player {
 public:
-    explicit HumanPlayer(int id, Color team);
+    explicit HumanPlayer();
     ~HumanPlayer();
-    bool play(int position, Board &board) override;
-    bool giveUp() override;
-    Color getTeam() override;
+    bool play(int position) override;
 };
 
 #endif //VIERGEWINNT_JOMANDRE_HUMANPLAYER_H

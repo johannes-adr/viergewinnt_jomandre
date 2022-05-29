@@ -13,11 +13,9 @@
 class Player {
 private:
     int m_piecesLeft {21};
-    std::weak_ptr<Board> m_board;
 
 protected:
-    const int m_id {0};
-
+    std::weak_ptr<Board> m_board;
 public:
     explicit Player(int id);
     ~Player();
