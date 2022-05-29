@@ -7,10 +7,8 @@
 #pragma once
 
 #include <string>
-#include <memory>
+#include "Misc.h"
 #include "Board.h"
-
-class Board;
 
 class Player {
 private:
@@ -19,10 +17,9 @@ private:
 
 protected:
     const int m_id {0};
-    const Color m_team {Color::NONE};
 
 public:
-    explicit Player(int id, Color team);
+    explicit Player(int id);
     ~Player();
     virtual bool play(int position) = 0;
     virtual bool giveUp() = 0;
