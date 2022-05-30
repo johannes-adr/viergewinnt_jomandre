@@ -89,3 +89,14 @@ Color Board::addPlayer(std::shared_ptr<Board>& board,std::shared_ptr<Player>& pl
     }
     return NONE;
 }
+
+bool Board::removePlayer(Player *p) {
+    for(int i = 0;i < this->m_players.length();i++){
+        auto res = this->m_players.getAt(i).unwrap();
+        if (p->equals(*res)){
+            this->m_players.swapRemoveAt(i);
+            return true;
+        }
+    }
+    return false;
+}
