@@ -11,7 +11,7 @@ Board::~Board() = default;
 // Return the lowest free field in the given column
 int Board::getLowestNoneField(int col){
     for (int row = 0;row < FIELD_HEIGHT;row++){
-        auto fieldAt = this->m_fields.at(std::make_pair(col,row));
+        auto fieldAt = this->m_fields.at(row).at(col);
         if(fieldAt != Color::NONE){
             return row-1;
         }
@@ -24,10 +24,10 @@ std::string Board::toString() {
     std::string builder;
     for (int row = 0; row < FIELD_HEIGHT; row++) {
         for (int col = 0; col < FIELD_WIDTH; col++) {
-            if (m_fields.at(std::pair(row,col)) == RED) {
+            if (m_fields.at(row).at(col) == RED) {
                 builder += "R";
             }
-            else if (m_fields.at(std::pair(row,col)) == YELLOW) {
+            else if (m_fields.at(row).at(col) == YELLOW) {
                 builder += "Y";
             }
             else {
@@ -45,16 +45,15 @@ bool Board::play(int col){
     if(lowestNoneField == -1){
         return false;
     }
-    this->m_fields.at(std::pair(lowestNoneField,col)) = this->m_players[0]->getTeam();
+    this->m_fields.at(lowestNoneField).at(col) = this->m_players[0]->getTeam();
     return true;
 }
 
 // Resets the board to its initial state
 void Board::reset(){
-    m_fields.clear();
     for (int i = 0; i < FIELD_HEIGHT; i++) {
         for (int j = 0; j < FIELD_WIDTH; j++) {
-            m_fields.insert(std::make_pair(std::make_pair(i,j),NONE));
+            m_fields.at(i).at(j) = Color::NONE;
         }
     }
 }

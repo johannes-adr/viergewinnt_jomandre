@@ -22,6 +22,6 @@ public:
 
     std::string toString();
 private:
-    std::map<std::pair<int,int>,Color> m_fields;
+    std::array<std::array<Color, FIELD_WIDTH>, FIELD_HEIGHT> m_fields;
     std::array<std::shared_ptr<Player>,2> m_players{};
 };
