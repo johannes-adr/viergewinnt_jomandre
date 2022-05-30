@@ -25,10 +25,7 @@ bool Player::giveUp() {
 // Try to play at a given position.
 bool Player::play(int position) {
     if(auto board = this->m_board.lock()) {
-        bool check = board->play(position);
-        if (check) {
-            return true;
-        }
+        return board->play(position);
     }
     return false;
 }
