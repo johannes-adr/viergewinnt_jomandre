@@ -47,7 +47,6 @@ bool Board::play(unsigned int col, Player &p){
     auto lowestNoneField = this->getLowestNoneField((int)col);
     if(lowestNoneField == -1){
         std::cout << "Column is full" << std::endl;
-        p.play();
     }
     this->m_fields[lowestNoneField][col] = p.getTeam();
     return true;

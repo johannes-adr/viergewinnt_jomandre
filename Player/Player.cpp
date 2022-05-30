@@ -25,12 +25,14 @@ bool Player::giveUp() {
 
 // Try to play at a given position.
 bool Player::play() {
-    unsigned int position = this->chooseColumn();
     if(auto board = this->m_board.lock()) {
-        bool check = board->play(position, *this);
-        if (check) {
-            return true;
+        for (int i = 0; i < 10000; i++) {
+            unsigned int position = this->chooseColumn();
+            if (board->play(position, *this);) {
+                return true;
+            }
         }
+        throw std::runtime_error("Unable to play");
     }
     printf("Unable to get reference to board from player (play)\n");
     return false;
