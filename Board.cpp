@@ -1,19 +1,17 @@
-//
-// Created by Johannes A. on 26.05.22.
-//
 #include "Board.h"
 
 // Creates a new Board object and fills it with empty fields.
-Board::Board(){
+Board::Board() {
     this->reset();
 }
 
+// Destructor
 Board::~Board() = default;
 
 // Return the lowest free field in the given column
 int Board::getLowestNoneField(int col){
     for (int row = 0;row < FIELD_HEIGHT;row++){
-        auto fieldAt = this->m_fields[row][col];
+        auto fieldAt = this->m_fields.at(std::make_pair(col,row));
         if(fieldAt != Color::NONE){
             return row-1;
         }
@@ -24,21 +22,19 @@ int Board::getLowestNoneField(int col){
 // Returns a string representation of the board.
 std::string Board::toString() {
     std::string builder;
-    auto board = &this->m_fields;
-    for(int row = 0;row < Board::FIELD_HEIGHT;row++){
-        for (int col = 0;col < Board::FIELD_WIDTH;col++){
-            auto field = board[row][col];
-            printf("%d\n",field);
-            /*if(field == Color::YELLOW){
-                builder+='Y';
-            }else if(field == Color::RED){
-                builder+='R';
-            }else{
-                builder+='0';
-            }*/
-
+    for (int row = 0; row < FIELD_HEIGHT; row++) {
+        for (int col = 0; col < FIELD_WIDTH; col++) {
+            if (m_fields.at(std::pair(row,col)) == RED) {
+                builder += "R";
+            }
+            else if (m_fields.at(std::pair(row,col)) == YELLOW) {
+                builder += "Y";
+            }
+            else {
+                builder += "0";
+            }
         }
-        builder+='\n';
+        builder += "\n";
     }
     return builder;
 }
@@ -49,19 +45,21 @@ bool Board::play(int col){
     if(lowestNoneField == -1){
         return false;
     }
-    this->m_fields[lowestNoneField][col] = this->m_players[0]->getTeam();
+    this->m_fields.at(std::pair(lowestNoneField,col)) = this->m_players[0]->getTeam();
     return true;
 }
 
 // Resets the board to its initial state
 void Board::reset(){
-    for(int row = 0;row < Board::FIELD_HEIGHT;row++){
-        for(int col = 0;col < Board::FIELD_WIDTH;col++){
-            this->m_fields[row][col] = Color::NONE;
+    m_fields.clear();
+    for (int i = 0; i < FIELD_HEIGHT; i++) {
+        for (int j = 0; j < FIELD_WIDTH; j++) {
+            m_fields.insert(std::make_pair(std::make_pair(i,j),NONE));
         }
     }
 }
 
+// Returns the team of the given player
 Color Board::teamOfPlayer(Player &p) {
     if(this->m_players[0].get() == &p){
         return Color::RED;

@@ -1,12 +1,9 @@
-//
-// Created by Johannes A. on 26.05.22.
-//
-
 #ifndef VIERGEWINNT_JOMANDRE_PLAYER_H
 #define VIERGEWINNT_JOMANDRE_PLAYER_H
 #pragma once
 
 #include <string>
+#include <memory>
 #include "Misc.h"
 #include "Board.h"
 
@@ -21,7 +18,7 @@ protected:
 public:
     explicit Player();
     ~Player();
-    virtual bool play(int position) = 0;
+    virtual bool play(int position);
     virtual bool giveUp();
     virtual Color getTeam();
 };

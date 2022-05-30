@@ -1,9 +1,6 @@
-//
-// Created by Johannes A. on 26.05.22.
-//
 #pragma once
 
-enum class Color{
+enum Color{
     NONE,RED,YELLOW
 };
 
