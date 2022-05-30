@@ -37,5 +37,8 @@ bool Player::play() {
 }
 
 void Player::setBoard(std::weak_ptr<Board> b) {
+    if(auto board = this->m_board.lock()) {
+        board->removePlayer(this);
+    }
     this->m_board = std::move(b);
 }
