@@ -1,4 +1,3 @@
-#pragma once
 #include "Player.h"
 
 // Creates a new player with the given id
@@ -25,10 +24,11 @@ bool Player::giveUp() {
 // Try to play at a given position.
 bool Player::play(int position) {
     if(auto board = this->m_board.lock()) {
-        bool check = board->play(position);
+        bool check = board->play(position, *this);
         if (check) {
             return true;
         }
     }
+    printf("Unable to get reference to board from player (play)\n");
     return false;
 }

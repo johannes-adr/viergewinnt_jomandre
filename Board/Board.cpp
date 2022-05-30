@@ -24,14 +24,17 @@ std::string Board::toString() {
     std::string builder;
     for (int row = 0; row < FIELD_HEIGHT; row++) {
         for (int col = 0; col < FIELD_WIDTH; col++) {
-            if (m_fields[row][col] == RED) {
-                builder += "R";
-            }
-            else if (m_fields[row][col] == YELLOW) {
-                builder += "Y";
-            }
-            else {
-                builder += "0";
+            auto color = m_fields[row][col];
+            switch (color) {
+                case NONE:
+                    builder += "[ ]";
+                    break;
+                case RED:
+                    builder += "[R]";
+                    break;
+                case YELLOW:
+                    builder += "[Y]";
+                    break;
             }
         }
         builder += "\n";
@@ -39,13 +42,15 @@ std::string Board::toString() {
     return builder;
 }
 
+
+
 // Returns true if the move was successful, false if the move was not possible
-bool Board::play(int col){
+bool Board::play(int col, Player &p){
     auto lowestNoneField = this->getLowestNoneField(col);
     if(lowestNoneField == -1){
         return false;
     }
-    this->m_fields[lowestNoneField][col] = this->m_players[0]->getTeam();
+   // this->m_fields[lowestNoneField][col] = this->m_players[0]->getTeam();
     return true;
 }
 
@@ -60,10 +65,28 @@ void Board::reset(){
 
 // Returns the team of the given player
 Color Board::teamOfPlayer(Player &p) {
-    if(this->m_players[0].get() == &p){
+    int index = -1;
+    for(int i = 0;i < this->m_players.length();i++){
+        auto res = this->m_players.getAt(i).unwrap();
+        if (p.equals(*res)){
+            index = i;
+        }
+    }
+
+    if(index==0){
         return Color::RED;
-    }else if(this->m_players[1].get() == &p){
+    }else if(index==1){
         return Color::YELLOW;
     }
     return Color::NONE;
+}
+
+Color Board::addPlayer(std::shared_ptr<Player> p) {
+    auto index = this->m_players.push(p);
+    if(index != -1){
+
+
+        return this->teamOfPlayer(*p);
+    }
+    return NONE;
 }
