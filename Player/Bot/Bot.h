@@ -2,7 +2,7 @@
 #define VIERGEWINNT_JOMANDRE_BOT_H
 #pragma once
 
-#include "Player.h"
+#include "../Player.h"
 
 class Bot : public Player {
 };

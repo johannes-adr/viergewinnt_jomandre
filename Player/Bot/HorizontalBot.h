@@ -1,7 +1,7 @@
 #ifndef VIERGEWINNT_JOMANDRE_HORIZONTALBOT_H
 #define VIERGEWINNT_JOMANDRE_HORIZONTALBOT_H
 
-#include "Player.h"
+#include "../Player.h"
 
 class HorizontalBot : public Player {
 private:

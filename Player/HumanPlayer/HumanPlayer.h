@@ -2,7 +2,7 @@
 #define VIERGEWINNT_JOMANDRE_HUMANPLAYER_H
 #pragma once
 
-#include "Player.h"
+#include "../Player.h"
 #include <iostream>
 
 class HumanPlayer : public Player {

@@ -1,7 +1,7 @@
 #ifndef VIERGEWINNT_JOMANDRE_SMARTBOT_H
 #define VIERGEWINNT_JOMANDRE_SMARTBOT_H
 
-#include "Player.h"
+#include "../Player.h"
 
 class SmartBot : public Player {
 public:

@@ -1,6 +1,6 @@
 #pragma once
-#include "../Misc.h"
-#include "../Player.h"
+#include "../Utils/Misc.h"
+#include "../Player/Player.h"
 #include <memory>
 #include <array>
 #include <map>
@@ -22,7 +22,7 @@ public:
 
     std::string toString();
 
-    static Color addPlayer(std::shared_ptr<Board> board, std::shared_ptr<Player> player);
+    static Color addPlayer(std::shared_ptr<Board>& board, std::shared_ptr<Player>& player);
 private:
     std::array<std::array<Color, FIELD_WIDTH>, FIELD_HEIGHT> m_fields{};
     StackVec<std::shared_ptr<Player>,2> m_players{};

@@ -81,7 +81,7 @@ Color Board::teamOfPlayer(Player &p) {
     return Color::NONE;
 }
 
-Color Board::addPlayer(std::shared_ptr<Board> board,std::shared_ptr<Player> player) {
+Color Board::addPlayer(std::shared_ptr<Board>& board,std::shared_ptr<Player>& player) {
     auto index = board->m_players.push(player);
     if(index != -1){
         player->setBoard(std::weak_ptr(board));

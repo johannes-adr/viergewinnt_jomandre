@@ -2,7 +2,7 @@
 #define VIERGEWINNT_JOMANDRE_RANDOMBOT_H
 
 #include <random>
-#include "Player.h"
+#include "../Player.h"
 
 class RandomBot : public Player {
 public:

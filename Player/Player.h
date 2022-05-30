@@ -4,9 +4,9 @@
 
 #include <string>
 #include <memory>
-#include "Misc.h"
-#include "Board/Board.h"
-#include "Utils/UniqueObject.h"
+#include "../Utils/Misc.h"
+#include "../Board/Board.h"
+#include "../Utils/UniqueObject.h"
 class Board;
 
 class Player: public UniqueObject{

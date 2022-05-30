@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "Board/Board.h"
-#include "Player.h"
+#include "Player/Player.h"
 
 int main() {
     auto board = std::make_shared<Board>();
