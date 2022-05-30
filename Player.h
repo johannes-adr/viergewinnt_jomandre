@@ -22,6 +22,7 @@ public:
     virtual bool play(int position);
     virtual bool giveUp();
     virtual Color getTeam();
+    virtual int chooseColumn() = 0;
 };
 
 #endif //VIERGEWINNT_JOMANDRE_PLAYER_H
