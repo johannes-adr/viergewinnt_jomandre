@@ -11,7 +11,7 @@ Board::~Board() = default;
 // Return the lowest free field in the given column
 int Board::getLowestNoneField(int col){
     for (int row = 0;row < FIELD_HEIGHT;row++){
-        auto fieldAt = this->m_fields.at(row).at(col);
+        auto fieldAt = this->m_fields[row][col];
         if(fieldAt != Color::NONE){
             return row-1;
         }
@@ -24,10 +24,10 @@ std::string Board::toString() {
     std::string builder;
     for (int row = 0; row < FIELD_HEIGHT; row++) {
         for (int col = 0; col < FIELD_WIDTH; col++) {
-            if (m_fields.at(row).at(col) == RED) {
+            if (m_fields[row][col] == RED) {
                 builder += "R";
             }
-            else if (m_fields.at(row).at(col) == YELLOW) {
+            else if (m_fields[row][col] == YELLOW) {
                 builder += "Y";
             }
             else {
@@ -45,7 +45,7 @@ bool Board::play(int col){
     if(lowestNoneField == -1){
         return false;
     }
-    this->m_fields.at(lowestNoneField).at(col) = this->m_players[0]->getTeam();
+    this->m_fields[lowestNoneField][col] = this->m_players[0]->getTeam();
     return true;
 }
 
@@ -53,7 +53,7 @@ bool Board::play(int col){
 void Board::reset(){
     for (int i = 0; i < FIELD_HEIGHT; i++) {
         for (int j = 0; j < FIELD_WIDTH; j++) {
-            m_fields.at(i).at(j) = Color::NONE;
+            m_fields[i][j] = Color::NONE;
         }
     }
 }
