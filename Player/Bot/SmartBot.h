@@ -5,7 +5,7 @@
 
 class SmartBot : public Player {
 public:
-    int chooseColumn() override;
+    unsigned  int chooseColumn() override;
 };
 
 #endif //VIERGEWINNT_JOMANDRE_SMARTBOT_H

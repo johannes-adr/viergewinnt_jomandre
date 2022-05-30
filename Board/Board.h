@@ -5,6 +5,7 @@
 #include <array>
 #include <map>
 #include "../Utils/StackVec.h"
+#include <iostream>
 class Player;
 
 class Board {
@@ -16,7 +17,7 @@ public:
     ~Board();
 
     Color teamOfPlayer(Player &p);
-    virtual bool play(int col, Player &p);
+    virtual bool play(unsigned int col, Player &p);
     int getLowestNoneField(int col);
     void reset();
 

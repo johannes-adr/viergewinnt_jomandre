@@ -7,7 +7,7 @@ class VerticalBot : public Player {
 private:
     int m_pointInRow {0};
 public:
-    int chooseColumn() override;
+    unsigned int chooseColumn() override;
 };
 
 #endif //VIERGEWINNT_JOMANDRE_VERTICALBOT_H

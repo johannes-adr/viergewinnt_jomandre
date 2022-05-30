@@ -24,7 +24,8 @@ bool Player::giveUp() {
 }
 
 // Try to play at a given position.
-bool Player::play(int position) {
+bool Player::play() {
+    unsigned int position = this->chooseColumn();
     if(auto board = this->m_board.lock()) {
         bool check = board->play(position, *this);
         if (check) {

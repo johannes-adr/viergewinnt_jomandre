@@ -19,9 +19,10 @@ public:
     explicit Player();
     ~Player();
     void setBoard(std::weak_ptr<Board> b);
-    virtual bool play(int position);
+    virtual bool play();
     virtual bool giveUp();
     virtual Color getTeam();
+    virtual unsigned int chooseColumn() = 0;
 };
 
 #endif //VIERGEWINNT_JOMANDRE_PLAYER_H

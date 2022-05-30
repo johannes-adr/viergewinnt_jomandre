@@ -6,7 +6,7 @@
 
 class RandomBot : public Player {
 public:
-    int chooseColumn() override;
+    unsigned int chooseColumn() override;
 };
 
 #endif //VIERGEWINNT_JOMANDRE_RANDOMBOT_H

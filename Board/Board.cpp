@@ -42,13 +42,12 @@ std::string Board::toString() {
     return builder;
 }
 
-
-
 // Returns true if the move was successful, false if the move was not possible
-bool Board::play(int col, Player &p){
-    auto lowestNoneField = this->getLowestNoneField(col);
+bool Board::play(unsigned int col, Player &p){
+    auto lowestNoneField = this->getLowestNoneField((int)col);
     if(lowestNoneField == -1){
-        return false;
+        std::cout << "Column is full" << std::endl;
+        p.play();
     }
     this->m_fields[lowestNoneField][col] = p.getTeam();
     return true;
@@ -81,6 +80,7 @@ Color Board::teamOfPlayer(Player &p) {
     return Color::NONE;
 }
 
+// Adds the given player to the board
 Color Board::addPlayer(std::shared_ptr<Board>& board,std::shared_ptr<Player>& player) {
     auto index = board->m_players.push(player);
     if(index != -1){

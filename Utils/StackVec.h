@@ -80,8 +80,4 @@ public:
     }
 };
 
-
-
-
-
 #endif //VIERGEWINNT_JOMANDRE_STACKVEC_H

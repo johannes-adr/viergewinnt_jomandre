@@ -8,7 +8,7 @@
 #include "memory"
 class UniqueObject{
 public:
-    UniqueObject(){}
+    UniqueObject()= default;
     virtual bool equals(UniqueObject &o){
        void* a = this;
        void* b = &o;
