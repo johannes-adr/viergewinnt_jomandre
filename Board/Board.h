@@ -19,8 +19,10 @@ public:
     virtual bool play(int col, Player &p);
     int getLowestNoneField(int col);
     void reset();
-    Color addPlayer(std::shared_ptr<Player> p);
+
     std::string toString();
+
+    static Color addPlayer(std::shared_ptr<Board> board, std::shared_ptr<Player> player);
 private:
     std::array<std::array<Color, FIELD_WIDTH>, FIELD_HEIGHT> m_fields{};
     StackVec<std::shared_ptr<Player>,2> m_players{};

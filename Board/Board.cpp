@@ -50,7 +50,7 @@ bool Board::play(int col, Player &p){
     if(lowestNoneField == -1){
         return false;
     }
-   // this->m_fields[lowestNoneField][col] = this->m_players[0]->getTeam();
+    this->m_fields[lowestNoneField][col] = p.getTeam();
     return true;
 }
 
@@ -81,12 +81,11 @@ Color Board::teamOfPlayer(Player &p) {
     return Color::NONE;
 }
 
-Color Board::addPlayer(std::shared_ptr<Player> p) {
-    auto index = this->m_players.push(p);
+Color Board::addPlayer(std::shared_ptr<Board> board,std::shared_ptr<Player> player) {
+    auto index = board->m_players.push(player);
     if(index != -1){
-
-
-        return this->teamOfPlayer(*p);
+        player->setBoard(std::weak_ptr(board));
+        return board->teamOfPlayer(*player);
     }
     return NONE;
 }

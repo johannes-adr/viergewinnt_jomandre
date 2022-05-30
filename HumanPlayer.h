@@ -7,7 +7,7 @@
 
 class HumanPlayer : public Player {
 public:
-    int chooseColumn() override;
+    int chooseColumn();
 };
 
 #endif //VIERGEWINNT_JOMANDRE_HUMANPLAYER_H

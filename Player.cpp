@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include <utility>
+
 // Creates a new player with the given id
 Player::Player() = default;
 
@@ -31,4 +33,8 @@ bool Player::play(int position) {
     }
     printf("Unable to get reference to board from player (play)\n");
     return false;
+}
+
+void Player::setBoard(std::weak_ptr<Board> b) {
+    this->m_board = std::move(b);
 }
