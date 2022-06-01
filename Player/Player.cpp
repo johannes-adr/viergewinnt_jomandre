@@ -28,7 +28,7 @@ bool Player::play() {
     if(auto board = this->m_board.lock()) {
         for (int i = 0; i < 10000; i++) {
             unsigned int position = this->chooseColumn();
-            if (board->play(position, *this);) {
+            if (board->play(position, *this)) {
                 return true;
             }
         }
