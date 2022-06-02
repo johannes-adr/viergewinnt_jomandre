@@ -84,28 +84,18 @@ bool Board::play(unsigned int col, Player &p){
 
 void Board::run(){
     this->isRunning = true;
-
-    //Two players in board
-    auto missingPlayers = this->m_players.getRemainingSpace();
-    if(missingPlayers != 0){
-        throw std::runtime_error(std::to_string(missingPlayers) + " players missing");
-    }
-
-    auto p1 = this->m_players.getAt(0).unwrap();
-    auto p2 = this->m_players.getAt(1).unwrap();
-
     while(this->isRunning){
-        p1->play();
-        if(this->checkWin()){
-            this->print();
-            return;
+        //Two players in board
+        auto missingPlayers = this->m_players.getRemainingSpace();
+        if(missingPlayers != 0){
+            throw std::runtime_error(std::to_string(missingPlayers) + " players missing");
         }
-
-
-        p2->play();
-        this->print();
-        if(this->checkWin())
-            return;
+        for(const auto& p : this->m_players){
+            p->play();
+            this->print();
+            if(this->checkWin())
+                return;
+        }
     }
 }
 
@@ -281,6 +271,7 @@ bool Board::checkWin() {
             }
         }
     }
+
 
 
     return false;

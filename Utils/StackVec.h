@@ -21,7 +21,11 @@ public:
         }else{
             return -1;
         }
+        std::array<int,1>().begin();
     }
+
+    T* begin() _NOEXCEPT {return buffer;}
+    T* end() _NOEXCEPT {return buffer + len;}
 
     unsigned int indexOf(T t){
         for(int i = 0;i < this->len;i++){
