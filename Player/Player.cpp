@@ -20,7 +20,7 @@ Color Player::getTeam() {
 
 // Gives up the game, currently not implemented
 bool Player::giveUp() {
-    return false;
+    throw std::logic_error("TODO");
 }
 
 // Try to play at a given position.

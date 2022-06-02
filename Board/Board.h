@@ -6,6 +6,8 @@
 #include <map>
 #include "../Utils/StackVec.h"
 #include <iostream>
+
+
 class Player;
 
 class Board {
@@ -24,10 +26,15 @@ public:
     bool removePlayer(Player *p);
     std::string toString();
 
+    void run();
+    void stop();
+    void print();
+    bool checkWin();
 
     static Color addPlayer(std::shared_ptr<Board>& board, std::shared_ptr<Player>& player);
 
-private:
+protected:
     std::array<std::array<Color, FIELD_WIDTH>, FIELD_HEIGHT> m_fields{};
     StackVec<std::shared_ptr<Player>,2> m_players{};
+    std::atomic<bool> isRunning {true};
 };
